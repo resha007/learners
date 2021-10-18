@@ -33,4 +33,9 @@ class Location extends CI_Controller {
         $data=$this->LocationModel->delete();
         echo json_encode($data);
     }
+
+	function checkName(){
+        $data=$this->LocationModel->checkName();
+        echo json_encode($data);
+    }
 }

@@ -7,6 +7,7 @@ class LocationModel extends CI_Model{
 		$hasil=$this->db->get('location');
 		return $hasil->result();
 	}
+
 	function save(){
 		$data = array(				
 				'name' 			=> $this->input->post('name'), 
@@ -16,6 +17,7 @@ class LocationModel extends CI_Model{
 		$result=$this->db->insert('location',$data);
 		return $result;
 	}
+
 	function update(){
 		$this->db->set('name', $this->input->post('name'));
 		$this->db->set('description', $this->input->post('description'));
@@ -31,7 +33,14 @@ class LocationModel extends CI_Model{
 		$this->db->where('id', $id);
 		$result=$this->db->update('location');
 		return $result;
-	}	
+	}
+	
+	function checkName(){
+		$this->db->select('name');
+		$this->db->where('status =', 'A');
+		$this->db->or_where('status =', 'I');
+		$hasil=$this->db->get('location');
+		return $hasil->result();
+	}
 }
-
 ?>
