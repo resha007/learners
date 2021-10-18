@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <span style="font-size: 12px">(Click on the relevant row to <b>update or delete</b>)</span>
                             </div>
                             <div class="card-body">
-                                <table id="dlTypeTable" class="table table-striped table-bordered">
+                                <table id="datatable" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Id</th>

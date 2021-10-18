@@ -17,28 +17,22 @@ class DLTypeModel extends CI_Model{
 		$result=$this->db->insert('dl_type',$data);
 		return $result;
 	}
-	function updateEmp(){
-		$id=$this->input->post('id');
-		$name=$this->input->post('name');
-		$age=$this->input->post('age');
-		$designation=$this->input->post('designation');
-		$skills=$this->input->post('skills');
-		$address=$this->input->post('address');
-		$this->db->set('name', $name);
-		$this->db->set('age', $age);
-		$this->db->set('designation', $designation);
-		$this->db->set('skills', $skills);
-		$this->db->set('address', $address);
-		$this->db->where('id', $id);
-		$result=$this->db->update('emp');
+	function update(){
+		$this->db->set('name', $this->input->post('name'));
+		$this->db->set('description', $this->input->post('description'));
+		$this->db->set('status', $this->input->post('status'));
+		$this->db->where('id', $this->input->post('txtId'));
+		$result=$this->db->update('dl_type');
 		return $result;	
 	}
-	// function deleteEmp(){
-	// 	$id=$this->input->post('id');
-	// 	$this->db->where('id', $id);
-	// 	$result=$this->db->delete('emp');
-	// 	return $result;
-	// }	
+
+	function delete(){
+		$id=$this->input->post('txtId');
+		$this->db->set('status', 'D');
+		$this->db->where('id', $id);
+		$result=$this->db->update('dl_type');
+		return $result;
+	}	
 }
 
 ?>
