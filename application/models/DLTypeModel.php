@@ -33,6 +33,14 @@ class DLTypeModel extends CI_Model{
 		$result=$this->db->update('dl_type');
 		return $result;
 	}	
+
+	function checkName(){
+		$this->db->select('name');
+		$this->db->where('status =', 'A');
+		$this->db->or_where('status =', 'I');
+		$hasil=$this->db->get('dl_type');
+		return $hasil->result();
+	}
 }
 
 ?>

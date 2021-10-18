@@ -236,4 +236,28 @@
         $("#"+elem[1].id).focus();
         
     } );
+
+    //checks the code is already in the database
+    $("#name").change(function(){
+        var name = $("#name").val();
+
+        $.ajax({
+                url		: 'dlType/checkName',
+                type  : 'ajax',
+                dataType : 'json',
+                async : true,
+            success: function(data) {
+                for (var i in data) {
+                    if(data[i]["name"]==name){
+                        Toast.fire({
+                                        type: 'warning',
+                                        title: 'This name is already available'
+                                    });
+                        $("#name").val("");
+                        $("#name").focus();
+                    }
+                }
+            }
+        });
+    });
 //});

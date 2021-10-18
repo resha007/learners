@@ -11,14 +11,7 @@ class DLType extends CI_Controller {
 
 	public function index()
 	{	
-		//$this->load->helper('url');
 		$this->load->view('dlType');
-	}
-
-	function crud(){
-		echo $this->input->get('type');
-		$data = $this->DLTypeModel->list();
-		echo json_encode($data);
 	}
 
 	function get(){ 
@@ -41,8 +34,8 @@ class DLType extends CI_Controller {
         echo json_encode($data);
     }
 
-	public function test()
-	{
-		$this->load->view('new');
-	}
+	function checkName(){
+        $data=$this->DLTypeModel->checkName();
+        echo json_encode($data);
+    }
 }
