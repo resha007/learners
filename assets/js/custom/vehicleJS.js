@@ -181,7 +181,7 @@
                 responsive: true,
                 "columnDefs": [
                     {
-                        "targets": [ 0 ],
+                        "targets": [ 0,4 ],
                         "visible": false,
                         "searchable": false
                     },
@@ -200,8 +200,8 @@
                 url		: "Vehicle/get",
                 dataType : 'json',
                 async : true,
-                success: function(data) {//alert(data);
-                for (var i in data) {alert(data[i]["vehicle_type_id"]["name"]);
+                success: function(data) {
+                for (var i in data) {
                     if(data[i]["status"]=='A')
                             data[i]["status"]="Active";
                     else if(data[i]["status"]=='I')
@@ -213,7 +213,8 @@
                         data[i]["description"],
                         data[i]["number_plate"],
                         data[i]["vehicle_type_id"],
-                        data[i]["status"]
+                        data[i]["status"],
+                        data[i]["vehicle_type_name"],
                 ]).draw();
                 }
             }
@@ -257,7 +258,7 @@
         
     } );
 
-    //checks the code is already in the database
+    //checks the name is already in the database
     $("#name").change(function(){
         var name = $("#name").val();
 
@@ -275,6 +276,30 @@
                                     });
                         $("#name").val("");
                         $("#name").focus();
+                    }
+                }
+            }
+        });
+    });
+
+    //checks the number Plate is already in the database
+    $("#numberPlate").change(function(){
+        var name = $("#numberPlate").val();
+
+        $.ajax({
+                url		: 'Vehicle/checkNumPlate',
+                type  : 'ajax',
+                dataType : 'json',
+                async : true,
+            success: function(data) {
+                for (var i in data) {
+                    if(data[i]["number_plate"]==name){
+                        Toast.fire({
+                                        type: 'warning',
+                                        title: 'This Number Plate is already available'
+                                    });
+                        $("#numberPlate").val("");
+                        $("#numberPlate").focus();
                     }
                 }
             }

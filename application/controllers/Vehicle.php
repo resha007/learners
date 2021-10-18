@@ -38,4 +38,9 @@ class Vehicle extends CI_Controller {
         $data=$this->VehicleModel->checkName();
         echo json_encode($data);
     }
+
+	function checkNumPlate(){
+        $data=$this->VehicleModel->checkNumPlate();
+        echo json_encode($data);
+    }
 }
