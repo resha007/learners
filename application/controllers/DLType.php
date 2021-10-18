@@ -27,6 +27,6 @@ class DLType extends CI_Controller {
 
 	public function test()
 	{
-		//$this->load->view('new');
+		$this->load->view('new');
 	}
 }
