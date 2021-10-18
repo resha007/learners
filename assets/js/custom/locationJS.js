@@ -259,4 +259,10 @@
             }
         });
     });
+
+    $("#reset").click(function(){
+        $("#add").prop("disabled",false);
+        $("#update").prop("disabled",true);
+        $("#delete").prop("disabled",true);
+    });
 //});
