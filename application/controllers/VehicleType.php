@@ -38,4 +38,9 @@ class VehicleType extends CI_Controller {
         $data=$this->VehicleTypeModel->checkName();
         echo json_encode($data);
     }
+
+	function getActive(){
+        $data=$this->VehicleTypeModel->getActive();
+        echo json_encode($data);
+    }
 }
