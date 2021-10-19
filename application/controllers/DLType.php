@@ -6,7 +6,7 @@ class DLType extends CI_Controller {
 	
 	function __construct(){
 		parent::__construct();
-		$this->load->model('DLTypeModel');
+		$this->load->model('DLTypeModel1');
 	}
 
 	public function index()
